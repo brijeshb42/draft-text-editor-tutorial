@@ -1,21 +1,51 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+/*
+Import the basic styling of the editor from the Draft-js
+lib alongwith our own css.
+*/
+import 'draft-js/dist/Draft.css';
 import './App.css';
 
-class App extends Component {
+import React from 'react';
+import { EditorState } from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
+
+class MyEditor extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      editorState: EditorState.createEmpty(),
+    };
+  }
+
+  componentDidMount() {
+    this.focus();
+  }
+
+  onChange = (editorState) => {
+    this.setState({
+      editorState,
+    });
+  }
+
+  focus = () => {
+    this.editor.focus();
+  }
+
   render() {
+    const { editorState } = this.state;
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="editor" onClick={this.focus}>
+        <Editor
+          editorState={editorState}
+          onChange={this.onChange}
+          ref={(element) => { this.editor = element; }}
+          placeholder="Tell your story"
+          spellCheck
+        />
       </div>
     );
   }
 }
 
-export default App;
+export default MyEditor;
