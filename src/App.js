@@ -1,7 +1,3 @@
-/*
-Import the basic styling of the editor from the Draft-js
-lib alongwith our own css.
-*/
 import 'draft-js/dist/Draft.css';
 import './App.css';
 

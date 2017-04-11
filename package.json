@@ -1,7 +1,7 @@
 {
   "name": "my-text-editor",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "draft-js": "^0.10.0",
     "draft-js-plugins-editor": "^2.0.0-beta1",
