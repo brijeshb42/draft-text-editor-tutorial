@@ -1,9 +1,11 @@
 import 'draft-js/dist/Draft.css';
-import './App.css';
+import './MyEditor.css';
 
 import React from 'react';
 import { EditorState } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
+
+import basicTextStylePlugin from './plugins/basicTextStylePlugin';
 
 class MyEditor extends React.Component {
   constructor(props) {
@@ -12,6 +14,10 @@ class MyEditor extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
     };
+
+    this.plugins = [
+      basicTextStylePlugin,
+    ];
   }
 
   componentDidMount() {
@@ -35,6 +41,7 @@ class MyEditor extends React.Component {
         <Editor
           editorState={editorState}
           onChange={this.onChange}
+          plugins={this.plugins}
           ref={(element) => { this.editor = element; }}
           placeholder="Tell your story"
           spellCheck
