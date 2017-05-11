@@ -2,3 +2,7 @@
   width: 600px;
   margin: 0 auto;
 }
+
+.editor a {
+    color: #08c;
+}

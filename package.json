@@ -5,6 +5,7 @@
   "dependencies": {
     "draft-js": "^0.10.0",
     "draft-js-plugins-editor": "^2.0.0-beta1",
+    "prop-types": "^15.5.9",
     "react": "^15.5.3",
     "react-dom": "^15.5.3"
   },

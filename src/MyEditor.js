@@ -6,6 +6,7 @@ import { EditorState } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 
 import basicTextStylePlugin from './plugins/basicTextStylePlugin';
+import addLinkPlugin from './plugins/addLinkPlugin';
 
 class MyEditor extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class MyEditor extends React.Component {
     };
 
     this.plugins = [
+      addLinkPlugin,
       basicTextStylePlugin,
     ];
   }
@@ -25,9 +27,11 @@ class MyEditor extends React.Component {
   }
 
   onChange = (editorState) => {
-    this.setState({
-      editorState,
-    });
+    if (editorState.getDecorator() !== null) {
+      this.setState({
+        editorState,
+      });
+    }
   }
 
   focus = () => {
